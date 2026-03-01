@@ -37,7 +37,7 @@ CapsLoggerV2/
 ├── resources/         # Иконки в формате .png
 ├── resources.qrc      # Коллекция ресурсов Qt
 ├── CMakeLists.txt     # Cmake конфигурация сборки
-├── README.md
+├── README.MD
 └── LICENSE
 ```
 
@@ -57,7 +57,7 @@ CapsLoggerV2/
 | -DIWYU_PATH                | путь к утилите iwyu ("" - пустая строка в случае когда её вывод не требуется,<br>по умолч. ищет в PATH)                                                                                   |
 | -DSTATIC_RUNTIME           | включение статической сборки (ON или OFF, по умолч. выключена)                                                                                                                            |
 | -DCMAKE_PREFIX_PATH        | Путь к директории установки Qt (напр., у вас есть разные версии<br>для динамической сборки x64 "C:\Qt\5.15.2\msvc2022_64"<br>и для статической x86 "C:\Qt\5.15.2\msvc2022_32_release_mt") |
-| -DCMAKE_BUILD_TYPE=Release | оптимизация сборки и наличие отладочных символов                                                                                                                                          |
+| -DCMAKE_BUILD_TYPE=Release | оптимизация сборки и отсутствие/наличие отладочных символов                                                                                                                                          |
 
 
 ### Пример сборки на Windows (MSVC 2022 + Qt 5)
@@ -88,8 +88,6 @@ sudo apt install build-essential cmake ninja-build qtbase5-dev qtbase5-dev-tools
 
 # Qt6 если требуется
 sudo apt install qt6-base-dev qt6-base-dev-tools qt6-tools-dev-tools
-
-# В некоторых случаях может потребоваться установка пакета
 ```
 ```bash
 # Переместиться в директорию локально клонированного репозитория
