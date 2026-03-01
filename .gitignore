@@ -1,0 +1,95 @@
+# Директории сборки
+build*/
+cmake-build-*/
+*/build*/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+CTestTestfile.cmake
+_Dependents.cmake
+CMakeUserPresets.json
+compile_commands.json
+
+# Исполняемые файлы
+*.exe
+*.exe.stackdump
+*.dll
+*.so
+*.dylib
+*.app
+CapsLoggerV2*
+
+# Объектные файлы
+*.o
+*.obj
+*.ilk
+*.pdb
+
+# Файлы сгенерированные Qt
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*.moc
+
+# Qt Creator
+*.autosave
+*.creator
+*.creator.user
+*.files
+*.includes
+*.config
+*.qbs
+
+# Visual Studio
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sdf
+*.opensdf
+Debug/
+Release/
+x64/
+x86/
+ipch/
+.vs/
+
+# Ninja
+.ninja_*
+build.ninja
+rules.ninja
+
+# Translations (скомпилированные .qm — игнорировать, исходники .ts — хранить)
+*.qm
+
+# Linux
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+README_raw.MD
+o.txt
+out.txt
+output.txt
+
+# IDE (VS Code, CLion)
+.vscode/
+.idea/
+.cproject
+.project
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Вспомогающие файлы IWYU
+*.imp

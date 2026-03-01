@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file>resources/ALL_OFF.png</file>
+	<file>resources/CAPS.png</file>
+	<file>resources/NUM.png</file>
+	<file>resources/SCROLL.png</file>
+	<file>translations/CapsLoggerV2_ru.qm</file>
+	<file>translations/CapsLoggerV2_en.qm</file>
+</qresource>
+</RCC>

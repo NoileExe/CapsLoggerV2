@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsWidget</class>
+ <widget class="QDialog" name="SettingsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>350</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>350</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>350</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>350</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="systemGroupBox">
+     <property name="title">
+      <string>Системные настройки</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <layout class="QFormLayout" name="langLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="appLanguageLbl">
+          <property name="text">
+           <string>Язык:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="appLanguage">
+          <property name="toolTip">
+           <string>Язык приложения</string>
+          </property>
+          <property name="whatsThis">
+           <string>Язык приложения</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="trackingGroupBox">
+     <property name="title">
+      <string>Отслеживание</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <layout class="QGridLayout" name="trackingLayout">
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="capsCheckBox">
+          <property name="toolTip">
+           <string>Отобржать или нет события кнопки Caps Lock</string>
+          </property>
+          <property name="whatsThis">
+           <string>Отобржать или нет события кнопки Caps Lock</string>
+          </property>
+          <property name="text">
+           <string notr="true">Caps Lock</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="numCheckBox">
+          <property name="toolTip">
+           <string>Отобржать или нет события кнопки Num Lock</string>
+          </property>
+          <property name="whatsThis">
+           <string>Отобржать или нет события кнопки Num Lock</string>
+          </property>
+          <property name="text">
+           <string notr="true">Num Lock</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="scrollCheckBox">
+          <property name="toolTip">
+           <string>Отобржать или нет события кнопки Scroll Lock</string>
+          </property>
+          <property name="whatsThis">
+           <string>Отобржать или нет события кнопки Scroll Lock</string>
+          </property>
+          <property name="text">
+           <string notr="true">Scroll Lock</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="iconsGroupBox">
+     <property name="title">
+      <string>Иконки</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QFormLayout" name="iconsLayout">
+        <item row="1" column="1">
+         <widget class="QComboBox" name="iconTheme">
+          <property name="toolTip">
+           <string>Вид отображаемых в трее иконок</string>
+          </property>
+          <property name="whatsThis">
+           <string>Вид отображаемых в трее иконок</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="iconTimeLabel">
+          <property name="text">
+           <string>Время анимации:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="iconThemeLabel">
+          <property name="text">
+           <string>Активная тема:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="iconTimeSpinBox">
+          <property name="toolTip">
+           <string>Время смены иконки при нескольких включенных состояниях</string>
+          </property>
+          <property name="whatsThis">
+           <string>Время смены иконки при нескольких включенных состояниях</string>
+          </property>
+          <property name="maximum">
+           <number>600000</number>
+          </property>
+          <property name="singleStep">
+           <number>500</number>
+          </property>
+          <property name="value">
+           <number>3000</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="themePreviewLayout">
+        <item row="1" column="0">
+         <widget class="QLabel" name="allOffLabel">
+          <property name="text">
+           <string>Выкл</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="allOffIconLbl">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="text">
+           <string notr="true">X</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="capsIconLbl">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="text">
+           <string notr="true">X</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="capsLabel">
+          <property name="text">
+           <string>CAPS</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="numIconLbl">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="text">
+           <string notr="true">X</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="scrollIconLbl">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16</height>
+           </size>
+          </property>
+          <property name="text">
+           <string notr="true">X</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLabel" name="scrollLabel">
+          <property name="text">
+           <string>SCROLL</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="numLabel">
+          <property name="text">
+           <string>NUM</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="messagesGroupBox">
+     <property name="title">
+      <string>Сообщения</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QFormLayout" name="messagesLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="msgTimeLabel">
+          <property name="text">
+           <string>Время анимации:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="msgTimeSpinBox">
+          <property name="toolTip">
+           <string>Время отображения информационного сообщения</string>
+          </property>
+          <property name="whatsThis">
+           <string>Время отображения информационного сообщения</string>
+          </property>
+          <property name="maximum">
+           <number>600000</number>
+          </property>
+          <property name="singleStep">
+           <number>500</number>
+          </property>
+          <property name="value">
+           <number>3000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="msgTypeLabel">
+          <property name="text">
+           <string>Тип сообщений:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <layout class="QVBoxLayout" name="radioBtnLayout">
+          <item>
+           <widget class="QRadioButton" name="systemRadioButton">
+            <property name="toolTip">
+             <string>Отображение сообщений встроенными функциями ОС</string>
+            </property>
+            <property name="whatsThis">
+             <string>Отображение сообщений встроенными функциями ОС</string>
+            </property>
+            <property name="text">
+             <string>Системные</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="customRadioButton">
+            <property name="toolTip">
+             <string>Разработанные для приложения всплывающие сообщения с возможностью смены места их отображения</string>
+            </property>
+            <property name="whatsThis">
+             <string>Разработанные для приложения всплывающие сообщения с возможностью смены места их отображения</string>
+            </property>
+            <property name="text">
+             <string>CapsLogger</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="msgLocation">
+          <property name="toolTip">
+           <string>Место показа сообщения на экране</string>
+          </property>
+          <property name="whatsThis">
+           <string>Место показа сообщения на экране</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="msgLocationLabel">
+          <property name="text">
+           <string>Расположение:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
