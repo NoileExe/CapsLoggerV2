@@ -20,7 +20,7 @@ compile_commands.json
 *.so
 *.dylib
 *.app
-CapsLoggerV2*
+/CapsLoggerV2*
 
 # Объектные файлы
 *.o
