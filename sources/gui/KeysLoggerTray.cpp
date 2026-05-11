@@ -100,27 +100,31 @@ KeysLoggerTray::KeysLoggerTray(QWidget* pwgt /*= 0*/)
 	
 	//-------------------------------------------------------------------------
 
-	QIcon infoIcon = QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation);
 	QString tooltip = createTooltip();
 
-	int time_message = QSettings().value(timeMsgSettings()).toInt();
-	bool isUseSystemMessage = false;
+	CapsLoggerMessageType msgType = static_cast<CapsLoggerMessageType>( QSettings().value(msgTypeSettings()).toInt() );
+	bool isShowMessages = msgType != CapsLoggerMessageType::NONE;
+	
+	if (isShowMessages)
 	{
-		CapsLoggerMessageType msgType = static_cast<CapsLoggerMessageType>( QSettings().value(msgTypeSettings()).toInt() );
-		isUseSystemMessage = msgType == CapsLoggerMessageType::SYSTEM  &&  CapsLoggerSettings::isSysMessagesAvailable();
-	}
+		QIcon infoIcon = QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation);
 
-	if (isUseSystemMessage)
-	{
-		showSystemNotify(tr("Текущие состояния"), tooltip, infoIcon, time_message);
-	}
-	else
-	{
-		// Удаляется сам
-		m_pPopupMessage = new TrayMessagePopup(tr("Текущие состояния"), tooltip, infoIcon, time_message,
-								m_keyStates.none() ? QColor(66, 133, 244)  :  QColor(155, 27, 48));
-		connect(m_pPopupMessage, &QObject::destroyed,
-				this, [this]() { m_pPopupMessage = nullptr; });
+		int time_message = QSettings().value(timeMsgSettings()).toInt();
+		bool isUseSystemMessage = msgType == CapsLoggerMessageType::SYSTEM	&&
+								  CapsLoggerSettings::isSysMessagesAvailable();
+
+		if (isUseSystemMessage)
+		{
+			showSystemNotify(tr("Текущие состояния"), tooltip, infoIcon, time_message);
+		}
+		else
+		{
+			// Удаляется сам
+			m_pPopupMessage = new TrayMessagePopup(tr("Текущие состояния"), tooltip, infoIcon, time_message,
+									m_keyStates.none() ? QColor(66, 133, 244)  :  QColor(155, 27, 48));
+			connect(m_pPopupMessage, &QObject::destroyed,
+					this, [this]() { m_pPopupMessage = nullptr; });
+		}
 	}
 
 	setToolTip(tooltip);
@@ -340,51 +344,60 @@ void KeysLoggerTray::slotChangeKeyState(KB_button btn, bool on)
 		if (m_pPopupMessage)
 			delete m_pPopupMessage;
 
-		QString keyNameState;
-		QString currentIconFile = QSettings().value(themeSettings()).toString();
-		if ( !SettingsWidget::isThemeCorrect(currentIconFile) )
-			currentIconFile = defaultThemePath();
 
-		switch (btn)
+		CapsLoggerMessageType msgType = static_cast<CapsLoggerMessageType>( QSettings().value(msgTypeSettings()).toInt() );
+		bool isShowMessages = msgType != CapsLoggerMessageType::NONE;
+		
+		if (isShowMessages)
 		{
-			case KB_button::CAPS:
-				keyNameState = "CAPS Lock";
-				currentIconFile += capsFileName();
-				break;
+			QString keyNameState;
+			QString currentIconFile = QSettings().value(themeSettings()).toString();
+			if ( !SettingsWidget::isThemeCorrect(currentIconFile) )
+				currentIconFile = defaultThemePath();
 
-			case KB_button::NUM:
-				keyNameState = "NUM Lock";
-				currentIconFile += numFileName();
-				break;
+			switch (btn)
+			{
+				case KB_button::CAPS:
+					keyNameState = "CAPS Lock";
+					currentIconFile += capsFileName();
+					break;
 
-			case KB_button::SCROLL:
-				keyNameState = "SCROLL Lock";
-				currentIconFile += scrollFileName();
-				break;
+				case KB_button::NUM:
+					keyNameState = "NUM Lock";
+					currentIconFile += numFileName();
+					break;
 
-			default:
-				keyNameState = "UNKNOWN key";
-				return;
-		}
+				case KB_button::SCROLL:
+					keyNameState = "SCROLL Lock";
+					currentIconFile += scrollFileName();
+					break;
 
-		keyNameState += on ? tr(" включен") : tr(" выключен");
+				default:
+					keyNameState = "UNKNOWN key";
+					return;
+			}
 
-		int time_message = QSettings().value(timeMsgSettings()).toInt();
-		bool isUseSystemMessage = false;
-		{
-			CapsLoggerMessageType msgType = static_cast<CapsLoggerMessageType>( QSettings().value(msgTypeSettings()).toInt() );
-			isUseSystemMessage = msgType == CapsLoggerMessageType::SYSTEM  &&  CapsLoggerSettings::isSysMessagesAvailable();
-		}
+			keyNameState += on ? tr(" включен") : tr(" выключен");
 
-		if (isUseSystemMessage)
-		{
-			showSystemNotify(tr("Изменение состояния"), keyNameState, QIcon(currentIconFile), time_message);
-		}
-		else
-		{
-			m_pPopupMessage = new TrayMessagePopup(tr("Изменение состояния"), keyNameState, QIcon(currentIconFile), time_message,
-													on ? QColor(155, 27, 48)  :  QColor(66, 133, 244));
-			connect(m_pPopupMessage, &QObject::destroyed, this, [this]() { m_pPopupMessage = nullptr; });
+
+			int time_message = QSettings().value(timeMsgSettings()).toInt();
+			bool isUseSystemMessage = msgType == CapsLoggerMessageType::SYSTEM	&&
+									  CapsLoggerSettings::isSysMessagesAvailable();
+			{
+				CapsLoggerMessageType msgType = static_cast<CapsLoggerMessageType>( QSettings().value(msgTypeSettings()).toInt() );
+				isUseSystemMessage = msgType == CapsLoggerMessageType::SYSTEM  &&  CapsLoggerSettings::isSysMessagesAvailable();
+			}
+
+			if (isUseSystemMessage)
+			{
+				showSystemNotify(tr("Изменение состояния"), keyNameState, QIcon(currentIconFile), time_message);
+			}
+			else
+			{
+				m_pPopupMessage = new TrayMessagePopup(tr("Изменение состояния"), keyNameState, QIcon(currentIconFile), time_message,
+														on ? QColor(155, 27, 48)  :  QColor(66, 133, 244));
+				connect(m_pPopupMessage, &QObject::destroyed, this, [this]() { m_pPopupMessage = nullptr; });
+			}
 		}
 	}
 

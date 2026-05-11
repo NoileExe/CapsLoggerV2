@@ -4,79 +4,79 @@
 <context>
     <name>KeysLoggerTray</name>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="130"/>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="135"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="118"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="123"/>
         <source>Текущие состояния</source>
         <translation>Current states</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="216"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="204"/>
         <source>Включить/выключить CAPS Lock</source>
         <translation>Turn on/off CAPS Lock</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="227"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="215"/>
         <source>Включить/выключить NUM Lock</source>
         <translation>Turn on/off NUM Lock</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="238"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="226"/>
         <source>Включить/выключить SCROLL Lock</source>
         <translation>Turn on/off SCROLL Lock</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="251"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="239"/>
         <source>Настройки...</source>
         <translation>Settings...</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="252"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="240"/>
         <source>О приложении</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="254"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="242"/>
         <source>Выход</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="318"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="306"/>
         <source>CAPS Lock включен</source>
         <translation>CAPS Lock is on</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="320"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="308"/>
         <source>NUM Lock включен</source>
         <translation>NUM Lock is on</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="322"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="310"/>
         <source>SCROLL Lock включен</source>
         <translation>SCROLL Lock is on</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="325"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="313"/>
         <source>Все выключены</source>
         <translation>All are turned off</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="386"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="380"/>
         <source> включен</source>
         <translation> is on</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="386"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="380"/>
         <source> выключен</source>
         <translation> is off</translation>
     </message>
     <message>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="393"/>
         <location filename="../sources/gui/KeysLoggerTray.cpp" line="397"/>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="401"/>
         <source>Изменение состояния</source>
         <translation>State has changed</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="655"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="648"/>
         <source>&lt;b&gt;CAPSLoggerV2&lt;/b&gt;&lt;br&gt;&lt;br&gt;Утилита для отслеживания состояний Caps/Num/Scroll Lock в трее.&lt;br&gt;&lt;br&gt;&lt;i&gt;Лицензия:&lt;/i&gt; MIT&lt;br&gt;&lt;i&gt;Использует Qt %1 (LGPL v3)&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Автор:&lt;/i&gt; Антон Белобрагин&lt;br&gt;&lt;br&gt;&lt;a href=&apos;https://github.com/NoileExe/CAPSLoggerV2&apos;&gt;GitHub&lt;/a&gt; | &lt;a href=&apos;https://www.qt.io/licensing/&apos;&gt;Qt Licensing&lt;/a&gt;</source>
         <translation>&lt;b&gt;CAPSLoggerV2&lt;/b&gt;&lt;br&gt;&lt;br&gt;Utility for monitoring Caps/Num/Scroll Lock states in the tray.&lt;br&gt;&lt;br&gt;&lt;i&gt;License:&lt;/i&gt; MIT&lt;br&gt;&lt;i&gt;Uses Qt %1 (LGPL v3)&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Author:&lt;/i&gt; Belobragin Anton&lt;br&gt;&lt;br&gt;&lt;a href=&apos;https://github.com/NoileExe/CAPSLoggerV2&apos;&gt;GitHub&lt;/a&gt; | &lt;a href=&apos;https://www.qt.io/licensing/&apos;&gt;Qt Licensing&lt;/a&gt;</translation>
     </message>
@@ -84,59 +84,59 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/main.cpp" line="32"/>
+        <location filename="../sources/main.cpp" line="37"/>
         <source>Повторный запуск</source>
         <translation>Multiple instances</translation>
     </message>
     <message>
-        <location filename="../sources/main.cpp" line="33"/>
+        <location filename="../sources/main.cpp" line="38"/>
         <source>Приложение уже работает.
 Нельзя запустить несколько копий одновременно.</source>
         <translation>The app is already running.
 Multiple instances cannot be running simultaneously.</translation>
     </message>
     <message>
-        <location filename="../sources/main.cpp" line="42"/>
+        <location filename="../sources/main.cpp" line="47"/>
         <location filename="../sources/platform/WinKeysLogger.cpp" line="21"/>
         <location filename="../sources/platform/X11KeysLogger.cpp" line="27"/>
         <source>Ошибка</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/main.cpp" line="43"/>
+        <location filename="../sources/main.cpp" line="48"/>
         <source>Не удалось создать сервер:
 %1</source>
         <translation>Failed to create server:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="186"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="187"/>
         <source>верхний левый угол</source>
         <translation>top left</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="189"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="190"/>
         <source>верхний правый угол</source>
         <translation>top right</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="192"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="193"/>
         <source>нижний левый угол</source>
         <translation>bottom left</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="195"/>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="204"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="196"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="205"/>
         <source>нижний правый угол</source>
         <translation>bottom right</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="198"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="199"/>
         <source>посередине сверху</source>
         <translation>top middle</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="201"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="202"/>
         <source>посередине снизу</source>
         <translation>bottom middle</translation>
     </message>
@@ -185,7 +185,7 @@ Multiple instances cannot be running simultaneously.</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="369"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="382"/>
         <source>Системные</source>
         <translation>System</translation>
     </message>
@@ -296,28 +296,39 @@ Multiple instances cannot be running simultaneously.</translation>
     <message>
         <location filename="../sources/gui/SettingsWidget.ui" line="363"/>
         <location filename="../sources/gui/SettingsWidget.ui" line="366"/>
-        <source>Отображение сообщений встроенными функциями ОС</source>
-        <translation>Displaying messages using built-in OS functions</translation>
+        <source>Не отображать сообщения о смене состояний</source>
+        <translation>Do not display messages about state changes</translation>
+    </message>
+    <message>
+        <location filename="../sources/gui/SettingsWidget.ui" line="369"/>
+        <source>Без сообщений</source>
+        <translation>No messages</translation>
     </message>
     <message>
         <location filename="../sources/gui/SettingsWidget.ui" line="376"/>
         <location filename="../sources/gui/SettingsWidget.ui" line="379"/>
+        <source>Отображение сообщений встроенными функциями ОС</source>
+        <translation>Displaying messages using built-in OS functions</translation>
+    </message>
+    <message>
+        <location filename="../sources/gui/SettingsWidget.ui" line="389"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="392"/>
         <source>Разработанные для приложения всплывающие сообщения с возможностью смены места их отображения</source>
         <translation>Custom pop-up messages designed for the app with the ability to change their display location</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="382"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="395"/>
         <source>CapsLogger</source>
         <translation>CapsLogger</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="391"/>
-        <location filename="../sources/gui/SettingsWidget.ui" line="394"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="404"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="407"/>
         <source>Место показа сообщения на экране</source>
         <translation>Place where the message is displayed on the screen</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="401"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="414"/>
         <source>Расположение:</source>
         <translation>Screen location:</translation>
     </message>
@@ -327,17 +338,17 @@ Multiple instances cannot be running simultaneously.</translation>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.cpp" line="80"/>
+        <location filename="../sources/gui/SettingsWidget.cpp" line="82"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.cpp" line="86"/>
+        <location filename="../sources/gui/SettingsWidget.cpp" line="88"/>
         <source>Отмена</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.cpp" line="116"/>
+        <location filename="../sources/gui/SettingsWidget.cpp" line="118"/>
         <source>По умолчанию</source>
         <translation>Default</translation>
     </message>

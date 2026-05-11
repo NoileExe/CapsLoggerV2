@@ -46,6 +46,8 @@ SettingsWidget::SettingsWidget(QWidget *parent)
 			this, &SettingsWidget::slotKeyTrackingChanged);
 
 	initMessageType();
+	connect(ui->noMessagesRadioButton, &QRadioButton::toggled,
+			this, &SettingsWidget::slotMessageTypeChanged);
 	connect(ui->systemRadioButton, &QRadioButton::toggled,
 			this, &SettingsWidget::slotMessageTypeChanged);
 	connect(ui->customRadioButton, &QRadioButton::toggled,
@@ -163,6 +165,7 @@ void SettingsWidget::initTracking()
 void SettingsWidget::initMessageType()
 {
 	int message_type = QSettings().value(msgTypeSettings()).toInt();
+	int none_type = static_cast<int>(CapsLoggerMessageType::NONE);
 	int system_type = static_cast<int>(CapsLoggerMessageType::SYSTEM);
 	int custom_type = static_cast<int>(CapsLoggerMessageType::CUSTOM);
 
@@ -177,17 +180,23 @@ void SettingsWidget::initMessageType()
 		}
 	}
 
-	if (message_type == system_type)
+	ui->msgTimeLabel->setEnabled(message_type != none_type);
+	ui->msgTimeSpinBox->setEnabled(message_type != none_type);
+
+	ui->noMessagesRadioButton->setChecked(message_type == none_type);
+	ui->systemRadioButton->setChecked(message_type == system_type);
+	ui->customRadioButton->setChecked(message_type == custom_type);
+	
+	ui->msgLocationLabel->setEnabled(message_type == custom_type);
+	ui->msgLocation->setEnabled(message_type == custom_type);
+	
+#ifdef Q_OS_LINUX
+	if (!CapsLoggerSettings::isX11Environment())
 	{
 		ui->msgLocationLabel->setEnabled(false);
 		ui->msgLocation->setEnabled(false);
-		ui->msgLocationLabel->setVisible(false);
-		ui->msgLocation->setVisible(false);
-		
-		ui->systemRadioButton->setChecked(true);
 	}
-	else if (message_type == custom_type)
-		ui->customRadioButton->setChecked(true);
+#endif
 }
 
 void SettingsWidget::initMessageLocations()
@@ -288,12 +297,15 @@ void SettingsWidget::slotMessageTypeChanged(bool checked)
 	CapsLoggerMessageType message_type = static_cast<CapsLoggerMessageType>( QSettings().value(msgTypeSettings()).toInt() );
 
 	QRadioButton *button = qobject_cast<QRadioButton*>(sender());
+
+	ui->msgTimeLabel->setEnabled(button != ui->noMessagesRadioButton);
+	ui->msgTimeSpinBox->setEnabled(button != ui->noMessagesRadioButton);
+
 	if (button == ui->customRadioButton)
 	{
 		ui->msgLocationLabel->setEnabled(checked);
 		ui->msgLocation->setEnabled(checked);
-		ui->msgLocationLabel->setVisible(checked);
-		ui->msgLocation->setVisible(checked);
+		
 #ifdef Q_OS_LINUX
 		if (!CapsLoggerSettings::isX11Environment())
 		{
@@ -301,20 +313,18 @@ void SettingsWidget::slotMessageTypeChanged(bool checked)
 			ui->msgLocation->setEnabled(false);
 		}
 #endif
+	}
 
-		if (checked  &&  message_type != CapsLoggerMessageType::CUSTOM)
-		{
-			QPushButton *okBtn = ui->buttonBox->button(QDialogButtonBox::Ok);
-			if (okBtn)
-				okBtn->setEnabled(true);
-		}
-	}
-	else if (checked  &&  message_type != CapsLoggerMessageType::SYSTEM)
-	{
-		QPushButton *okBtn = ui->buttonBox->button(QDialogButtonBox::Ok);
-		if (okBtn)
-			okBtn->setEnabled(true);
-	}
+
+	QPushButton *okBtn = ui->buttonBox->button(QDialogButtonBox::Ok);
+	bool isChanged = !( (button == ui->noMessagesRadioButton	&&  message_type == CapsLoggerMessageType::NONE)	||
+						(button == ui->systemRadioButton		&&  message_type == CapsLoggerMessageType::SYSTEM)	||
+						(button == ui->customRadioButton		&&  message_type == CapsLoggerMessageType::CUSTOM)		);
+	
+	// Если кнопка ОК активна, но текущий тип сообщений соответствует сохраненному в файле настроек (не изменялся)
+	// не деактивируем кнопку ОК, т.к. она могла быть активирована другими настройками (чтобы не сломать возможность применить их)
+	if (okBtn && !okBtn->isEnabled() && isChanged)
+		okBtn->setEnabled(true);
 }
 
 void SettingsWidget::slotLocationChanged(int index)
@@ -381,12 +391,17 @@ void SettingsWidget::slotValueChanged(int num)
 void SettingsWidget::accept()
 {
 	QString theme_path = ui->iconTheme->currentData(Qt::UserRole).toString();
-	bool isCapsTrackingOn = ui->capsCheckBox->isChecked(); QSettings().value(capsTrackSettings()).toBool();
-	bool isNumTrackingOn = ui->numCheckBox->isChecked(); QSettings().value(numTrackSettings()).toBool();
-	bool isScrollTrackingOn = ui->scrollCheckBox->checkState(); QSettings().value(scrollTrackSettings()).toBool();
-	int message_type = ui->systemRadioButton->isChecked() ?
-							static_cast<int>(CapsLoggerMessageType::SYSTEM) :
-							static_cast<int>(CapsLoggerMessageType::CUSTOM);
+	bool isCapsTrackingOn = ui->capsCheckBox->isChecked();
+	QSettings().value(capsTrackSettings()).toBool();
+	bool isNumTrackingOn = ui->numCheckBox->isChecked();
+	QSettings().value(numTrackSettings()).toBool();
+	bool isScrollTrackingOn = ui->scrollCheckBox->checkState();
+	QSettings().value(scrollTrackSettings()).toBool();
+	int message_type = static_cast<int>(CapsLoggerMessageType::NONE);
+	if (ui->systemRadioButton->isChecked())
+		message_type = static_cast<int>(CapsLoggerMessageType::SYSTEM);
+	else if (ui->customRadioButton->isChecked())
+		message_type = static_cast<int>(CapsLoggerMessageType::CUSTOM);
 	int message_location = ui->msgLocation->currentData(Qt::UserRole).toInt();
 	int language = ui->appLanguage->currentData(Qt::UserRole).toInt();
 	int time_icon = ui->iconTimeSpinBox->value();
@@ -411,7 +426,7 @@ void SettingsWidget::accept()
 		
 		if (settings.value(msgLocationSettings()).toInt() != message_location)
 		{
-			if (message_type != static_cast<int>(CapsLoggerMessageType::SYSTEM))
+			if (message_type == static_cast<int>(CapsLoggerMessageType::CUSTOM))
 				settings.setValue(msgLocationSettings(),	message_location);
 		}
 		

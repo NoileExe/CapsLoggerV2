@@ -4,79 +4,79 @@
 <context>
     <name>KeysLoggerTray</name>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="130"/>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="135"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="118"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="123"/>
         <source>Текущие состояния</source>
         <translation>Текущие состояния</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="216"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="204"/>
         <source>Включить/выключить CAPS Lock</source>
         <translation>Включить/выключить CAPS Lock</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="227"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="215"/>
         <source>Включить/выключить NUM Lock</source>
         <translation>Включить/выключить NUM Lock</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="238"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="226"/>
         <source>Включить/выключить SCROLL Lock</source>
         <translation>Включить/выключить SCROLL Lock</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="251"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="239"/>
         <source>Настройки...</source>
         <translation>Настройки...</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="252"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="240"/>
         <source>О приложении</source>
         <translation>О приложении</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="254"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="242"/>
         <source>Выход</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="318"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="306"/>
         <source>CAPS Lock включен</source>
         <translation>CAPS Lock включен</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="320"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="308"/>
         <source>NUM Lock включен</source>
         <translation>NUM Lock включен</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="322"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="310"/>
         <source>SCROLL Lock включен</source>
         <translation>SCROLL Lock включен</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="325"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="313"/>
         <source>Все выключены</source>
         <translation>Все выключены</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="386"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="380"/>
         <source> включен</source>
         <translation> включен</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="386"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="380"/>
         <source> выключен</source>
         <translation> выключен</translation>
     </message>
     <message>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="393"/>
         <location filename="../sources/gui/KeysLoggerTray.cpp" line="397"/>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="401"/>
         <source>Изменение состояния</source>
         <translation>Изменение состояния</translation>
     </message>
     <message>
-        <location filename="../sources/gui/KeysLoggerTray.cpp" line="655"/>
+        <location filename="../sources/gui/KeysLoggerTray.cpp" line="648"/>
         <source>&lt;b&gt;CAPSLoggerV2&lt;/b&gt;&lt;br&gt;&lt;br&gt;Утилита для отслеживания состояний Caps/Num/Scroll Lock в трее.&lt;br&gt;&lt;br&gt;&lt;i&gt;Лицензия:&lt;/i&gt; MIT&lt;br&gt;&lt;i&gt;Использует Qt %1 (LGPL v3)&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Автор:&lt;/i&gt; Антон Белобрагин&lt;br&gt;&lt;br&gt;&lt;a href=&apos;https://github.com/NoileExe/CAPSLoggerV2&apos;&gt;GitHub&lt;/a&gt; | &lt;a href=&apos;https://www.qt.io/licensing/&apos;&gt;Qt Licensing&lt;/a&gt;</source>
         <translation>&lt;b&gt;CAPSLoggerV2&lt;/b&gt;&lt;br&gt;&lt;br&gt;Утилита для отслеживания состояний Caps/Num/Scroll Lock в трее.&lt;br&gt;&lt;br&gt;&lt;i&gt;Лицензия:&lt;/i&gt; MIT&lt;br&gt;&lt;i&gt;Использует Qt %1 (LGPL v3)&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Автор:&lt;/i&gt; Антон Белобрагин&lt;br&gt;&lt;br&gt;&lt;a href=&apos;https://github.com/NoileExe/CAPSLoggerV2&apos;&gt;GitHub&lt;/a&gt; | &lt;a href=&apos;https://www.qt.io/licensing/&apos;&gt;Qt Licensing&lt;/a&gt;</translation>
     </message>
@@ -84,59 +84,59 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/main.cpp" line="32"/>
+        <location filename="../sources/main.cpp" line="37"/>
         <source>Повторный запуск</source>
         <translation>Повторный запуск</translation>
     </message>
     <message>
-        <location filename="../sources/main.cpp" line="33"/>
+        <location filename="../sources/main.cpp" line="38"/>
         <source>Приложение уже работает.
 Нельзя запустить несколько копий одновременно.</source>
         <translation>Приложение уже работает.
 Нельзя запустить несколько копий одновременно.</translation>
     </message>
     <message>
-        <location filename="../sources/main.cpp" line="42"/>
+        <location filename="../sources/main.cpp" line="47"/>
         <location filename="../sources/platform/WinKeysLogger.cpp" line="21"/>
         <location filename="../sources/platform/X11KeysLogger.cpp" line="27"/>
         <source>Ошибка</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/main.cpp" line="43"/>
+        <location filename="../sources/main.cpp" line="48"/>
         <source>Не удалось создать сервер:
 %1</source>
         <translation>Не удалось создать сервер:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="186"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="187"/>
         <source>верхний левый угол</source>
         <translation>верхний левый угол</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="189"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="190"/>
         <source>верхний правый угол</source>
         <translation>верхний правый угол</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="192"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="193"/>
         <source>нижний левый угол</source>
         <translation>нижний левый угол</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="195"/>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="204"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="196"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="205"/>
         <source>нижний правый угол</source>
         <translation>нижний правый угол</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="198"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="199"/>
         <source>посередине сверху</source>
         <translation>посередине сверху</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsDefines.cpp" line="201"/>
+        <location filename="../sources/gui/SettingsDefines.cpp" line="202"/>
         <source>посередине снизу</source>
         <translation>посередине снизу</translation>
     </message>
@@ -185,7 +185,7 @@
         <translation>Dialog</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="369"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="382"/>
         <source>Системные</source>
         <translation>Системные</translation>
     </message>
@@ -295,28 +295,39 @@
     <message>
         <location filename="../sources/gui/SettingsWidget.ui" line="363"/>
         <location filename="../sources/gui/SettingsWidget.ui" line="366"/>
-        <source>Отображение сообщений встроенными функциями ОС</source>
-        <translation>Отображение сообщений встроенными функциями ОС</translation>
+        <source>Не отображать сообщения о смене состояний</source>
+        <translation>Не отображать сообщения о смене состояний</translation>
+    </message>
+    <message>
+        <location filename="../sources/gui/SettingsWidget.ui" line="369"/>
+        <source>Без сообщений</source>
+        <translation>Без сообщений</translation>
     </message>
     <message>
         <location filename="../sources/gui/SettingsWidget.ui" line="376"/>
         <location filename="../sources/gui/SettingsWidget.ui" line="379"/>
+        <source>Отображение сообщений встроенными функциями ОС</source>
+        <translation>Отображение сообщений встроенными функциями ОС</translation>
+    </message>
+    <message>
+        <location filename="../sources/gui/SettingsWidget.ui" line="389"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="392"/>
         <source>Разработанные для приложения всплывающие сообщения с возможностью смены места их отображения</source>
         <translation>Разработанные для приложения всплывающие сообщения с возможностью смены места их отображения</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="382"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="395"/>
         <source>CapsLogger</source>
         <translation>CapsLogger</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="391"/>
-        <location filename="../sources/gui/SettingsWidget.ui" line="394"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="404"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="407"/>
         <source>Место показа сообщения на экране</source>
         <translation>Место показа сообщения на экране</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.ui" line="401"/>
+        <location filename="../sources/gui/SettingsWidget.ui" line="414"/>
         <source>Расположение:</source>
         <translation>Расположение:</translation>
     </message>
@@ -326,17 +337,17 @@
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.cpp" line="80"/>
+        <location filename="../sources/gui/SettingsWidget.cpp" line="82"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.cpp" line="86"/>
+        <location filename="../sources/gui/SettingsWidget.cpp" line="88"/>
         <source>Отмена</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../sources/gui/SettingsWidget.cpp" line="116"/>
+        <location filename="../sources/gui/SettingsWidget.cpp" line="118"/>
         <source>По умолчанию</source>
         <translation>По умолчанию</translation>
     </message>

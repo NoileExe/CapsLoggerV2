@@ -132,7 +132,8 @@ namespace CapsLoggerSettings
 		}
 
 		// Ошибочное значение или настроено на системные сообщения, которые не поддерживаются
-		if (static_cast<int>(CapsLoggerMessageType::CUSTOM) < message_type ||
+		if ( (message_type < static_cast<int>(CapsLoggerMessageType::NONE) &&
+			  static_cast<int>(CapsLoggerMessageType::CUSTOM) < message_type)  ||
 			(message_type == static_cast<int>(CapsLoggerMessageType::SYSTEM) && !CapsLoggerSettings::isSysMessagesAvailable()) )
 		{
 			message_type = static_cast<int>(CapsLoggerMessageType::CUSTOM);
@@ -163,8 +164,8 @@ namespace CapsLoggerSettings
 
 		//-------------------------------------------------------------------------
 
-		settings.setValue(themeSettings(),		theme_path);
-		settings.setValue(capsTrackSettings(),	isCapsTrackingOn);
+		settings.setValue(themeSettings(),			theme_path);
+		settings.setValue(capsTrackSettings(),		isCapsTrackingOn);
 		settings.setValue(numTrackSettings(),		isNumTrackingOn);
 		settings.setValue(scrollTrackSettings(),	isScrollTrackingOn);
 		settings.setValue(msgTypeSettings(),		message_type);

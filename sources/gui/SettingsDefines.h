@@ -9,6 +9,7 @@
 
 enum class CapsLoggerMessageType
 {
+	NONE,
 	SYSTEM,
 	CUSTOM
 };

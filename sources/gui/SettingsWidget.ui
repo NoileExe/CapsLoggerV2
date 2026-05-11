@@ -318,14 +318,10 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <layout class="QFormLayout" name="messagesLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="msgTimeLabel">
-          <property name="text">
-           <string>Время анимации:</string>
-          </property>
-         </widget>
-        </item>
+       <layout class="QGridLayout" name="messagesGridLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
         <item row="0" column="1">
          <widget class="QSpinBox" name="msgTimeSpinBox">
           <property name="toolTip">
@@ -345,6 +341,23 @@
           </property>
          </widget>
         </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="msgLocation">
+          <property name="toolTip">
+           <string>Место показа сообщения на экране</string>
+          </property>
+          <property name="whatsThis">
+           <string>Место показа сообщения на экране</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="msgTimeLabel">
+          <property name="text">
+           <string>Время анимации:</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="msgTypeLabel">
           <property name="text">
@@ -357,6 +370,19 @@
         </item>
         <item row="1" column="1">
          <layout class="QVBoxLayout" name="radioBtnLayout">
+          <item>
+           <widget class="QRadioButton" name="noMessagesRadioButton">
+            <property name="toolTip">
+             <string>Не отображать сообщения о смене состояний</string>
+            </property>
+            <property name="whatsThis">
+             <string>Не отображать сообщения о смене состояний</string>
+            </property>
+            <property name="text">
+             <string>Без сообщений</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QRadioButton" name="systemRadioButton">
             <property name="toolTip">
@@ -384,16 +410,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-        <item row="2" column="1">
-         <widget class="QComboBox" name="msgLocation">
-          <property name="toolTip">
-           <string>Место показа сообщения на экране</string>
-          </property>
-          <property name="whatsThis">
-           <string>Место показа сообщения на экране</string>
-          </property>
-         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="msgLocationLabel">

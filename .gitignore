@@ -91,5 +91,5 @@ output.txt
 Thumbs.db
 Desktop.ini
 
-# Вспомогающие файлы IWYU
+# Вспомогательные файлы IWYU
 *.imp
