@@ -20,15 +20,15 @@ int main(int argc, char** argv)
 {
 	QApplication app(argc, argv);
 	app.setOrganizationName("CAPSLoggerV2");
-    app.setApplicationName("CAPSLoggerV2");
-    app.setApplicationVersion("2.0");
+	app.setApplicationName("CAPSLoggerV2");
+	app.setApplicationVersion("2.0");
 	app.setWindowIcon(QIcon(defaultThemePath() + capsFileName()));
 	app.setQuitOnLastWindowClosed(false);
 
 	CapsLoggerSettings::initSettings();
 
 //----------------------Предотвращение повторного запуска----------------------
-    const QString serverName = QString("CAPSLoggerV%0_Singleton").arg(app.applicationVersion());
+	const QString serverName = QString("CAPSLoggerV%0_Singleton").arg(app.applicationVersion());
 	
 	QLocalSocket socket;
 	socket.connectToServer(serverName);

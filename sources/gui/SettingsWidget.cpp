@@ -119,6 +119,18 @@ void SettingsWidget::initIconThemes()
 	ui->iconTheme->setCurrentIndex(0);
 
 	QString searchThemePath = QCoreApplication::applicationDirPath();
+#ifdef Q_OS_LINUX
+	if (QProcessEnvironment::systemEnvironment().contains("APPIMAGE"))
+	{
+		QString appImage = QProcessEnvironment::systemEnvironment().value("APPIMAGE");
+		if (!appImage.isEmpty())
+		{
+			searchThemePath = QFileInfo(appImage).absolutePath();
+			QDir().mkpath(searchThemePath);
+		}
+	}
+#endif
+
 	if (!searchThemePath.endsWith('/')  &&  !searchThemePath.endsWith('\\'))
 			searchThemePath += '/';
 	

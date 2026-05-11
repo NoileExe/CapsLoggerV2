@@ -8,6 +8,7 @@
 
 #ifdef Q_OS_LINUX
 	#include <QProcessEnvironment>
+	#include <QDir>				// for QDir
 	#include <QStringList>		// for QStringList
 	#include <QDBusConnection>	// for QDBusConnection
 	#include <QDBusInterface>	// for QDBusInterface
@@ -76,7 +77,19 @@ namespace CapsLoggerSettings
 	{
 		// Получаем путь к папке с исполняемым файлом
 		QString appDir = QApplication::applicationDirPath();
-		
+
+#ifdef Q_OS_LINUX
+		if (QProcessEnvironment::systemEnvironment().contains("APPIMAGE"))
+		{
+			QString appImage = QProcessEnvironment::systemEnvironment().value("APPIMAGE");
+			if (!appImage.isEmpty())
+			{
+				appDir = QFileInfo(appImage).absolutePath();
+				QDir().mkpath(appDir);
+			}
+		}
+#endif
+
 		QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, appDir);
 		QSettings::setDefaultFormat(QSettings::IniFormat);		// INI как формат по умолчанию
 
@@ -119,7 +132,7 @@ namespace CapsLoggerSettings
 			if (!theme_path.endsWith('/')  &&  !theme_path.endsWith('\\'))
 				theme_path += '/';
 			
-			// Отсутствует директория или набора иконок не полный -
+			// Отсутствует директория или набор иконок не полный -
 			// меняем тему на дефолтную
 			if (!QFile::exists(theme_path) ||
 				!QFile::exists(theme_path + allOffFileName()) ||

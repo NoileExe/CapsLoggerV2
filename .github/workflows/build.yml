@@ -56,6 +56,10 @@ jobs:
           # Оставляем только PNG и ICO
           [ -d imageformats ] && find imageformats/ -type f ! -name 'qpng.dll' ! -name 'qico.dll' -delete
 
+      - name: Copy THEMES folder
+        shell: bash
+        run: cp -r docs/THEMES deploy-${{ matrix.name }}/
+
       - name: Add Qt license
         shell: bash
         run: curl -sSfL https://raw.githubusercontent.com/qt/qtbase/v5.15.2/LICENSE.LGPLv3 -o deploy-${{ matrix.name }}/LICENSE_QT.txt
@@ -121,8 +125,10 @@ jobs:
         run: |
           # Копируем лицензию рядом с AppImage и архивируем
           cp AppDir/LICENSE_QT.txt .
+          # Копируем THEMES рядом с AppImage (не внутрь!)
+          cp -r docs/THEMES .
           # Архивируем ТОЛЬКО итоговый AppImage приложения (по шаблону имени)
-          tar czf CapsLoggerV2-Linux.tar.gz CapsLoggerV2*.AppImage LICENSE_QT.txt
+          tar czf CapsLoggerV2-Linux.tar.gz CapsLoggerV2*.AppImage THEMES/ LICENSE_QT.txt
 
       - uses: actions/upload-artifact@v5
         with:
@@ -151,26 +157,22 @@ jobs:
           body: |
             ## CapsLoggerV2 ${{ github.ref_name }}
             
-            ✅ Changelog:
-              - Added the ability to disable pop-up messages about button state changes
-            
-            
             **Download**
             - 💻**Windows:** download -> unzip -> use
             
-            - 🐧 **Download on Linux** (Requires glibc ≥ 2.35 (Ubuntu 22.04+, Debian 11+, Fedora 34+, or newer).):
+            - 🐧 **Download on Linux** (Requires glibc ≥ 2.35 (Ubuntu 22.04+, Debian 11+, Fedora 34+, or newer)):
               ```bash
               wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/CapsLoggerV2-Linux.tar.gz
               tar xzf CapsLoggerV2-Linux.tar.gz
               chmod +x CapsLoggerV2*.AppImage
               ./CapsLoggerV2*.AppImage
               ```
-            
+              
             
             📜 **Sources**: MIT — `LICENSE` in repository.  
             ⚙️ **Qt 5.15.2**: LGPLv3 — archives include `LICENSE_QT.txt`.  
                Qt sources: <https://github.com/qt/qt5/tree/v5.15.2>  
-               The user can replace the Qt libraries in the program folder.  
+               The user can replace the Qt libraries in the program folder.
             📦 **Portable**: no installation required.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
