@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=CapsLoggerV2
+Exec=CapsLoggerV2
+Icon=CAPS
+Categories=Utility;
+Comment=CAPSLoggerV2 - Caps/Num/Scroll Lock indicator

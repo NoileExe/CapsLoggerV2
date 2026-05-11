@@ -1,0 +1,176 @@
+name: Build & Release
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write  # требуется для создания релиза через action-gh-release
+
+env:
+  PYTHONWARNINGS: ignore
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - { arch: 'win64_msvc2019_64', name: 'Win64', msvc_arch: 'x64' }
+          - { arch: 'win32_msvc2019',    name: 'Win32', msvc_arch: 'x86' }
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: '5.15.2'
+          host: 'windows'
+          target: 'desktop'
+          arch: ${{ matrix.arch }}
+          # mirror: 'https://mirrors.ocf.berkeley.edu/qt/'
+          cache: true
+          cache-key-prefix: 'qt5152-${{ matrix.arch }}'
+
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{ matrix.msvc_arch }}
+
+      - uses: seanmiddleditch/gha-setup-ninja@v5
+
+      - name: Compile translations
+        run: lrelease translations/CapsLoggerV2_ru.ts translations/CapsLoggerV2_en.ts
+
+      - name: Build
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DQT_VERSION=5 -DIWYU_PATH=""
+          cmake --build build
+
+      - name: Deploy Qt runtime
+        shell: bash
+        run: |
+          mkdir deploy-${{ matrix.name }}
+          cp build/CapsLoggerV2.exe deploy-${{ matrix.name }}/
+          cd deploy-${{ matrix.name }}
+          windeployqt --release --no-compiler-runtime CapsLoggerV2.exe
+          rm -rf iconengines/ bearer/ translations/
+          # Оставляем только PNG и ICO
+          [ -d imageformats ] && find imageformats/ -type f ! -name 'qpng.dll' ! -name 'qico.dll' -delete
+
+      - name: Add Qt license
+        shell: bash
+        run: curl -sSfL https://raw.githubusercontent.com/qt/qtbase/v5.15.2/LICENSE.LGPLv3 -o deploy-${{ matrix.name }}/LICENSE_QT.txt
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: ${{ matrix.name }}
+          path: deploy-${{ matrix.name }}/*
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: '5.15.2'
+          host: 'linux'
+          target: 'desktop'
+          arch: 'gcc_64'
+          # mirror: 'https://mirrors.ocf.berkeley.edu/qt/'
+          cache: true
+          cache-key-prefix: 'qt5152-Linux'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential cmake ninja-build libxtst-dev libxkbfile-dev
+          sudo apt install -y libx11-dev libxext-dev libxft-dev libxinerama-dev libxcursor-dev libpng-dev libjpeg-dev zlib1g-dev
+
+      - name: Compile translations
+        run: lrelease translations/CapsLoggerV2_ru.ts translations/CapsLoggerV2_en.ts
+
+      - name: Build
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DQT_VERSION=5 -DIWYU_PATH=""
+          cmake --build build
+
+      - name: Download linuxdeploy (pinned versions)
+        run: |
+          wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
+          wget -q https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-x86_64.AppImage
+          chmod +x linuxdeploy*.AppImage
+
+      - name: Prepare AppDir (license, desktop, icon)
+        run: |
+          mkdir -p AppDir
+          curl -sSfL https://raw.githubusercontent.com/qt/qtbase/v5.15.2/LICENSE.LGPLv3 -o AppDir/LICENSE_QT.txt
+          cp resources/CapsLoggerV2.desktop AppDir/
+          cp resources/CAPS.png AppDir/
+
+      - name: Create AppImage
+        run: >
+          ./linuxdeploy-x86_64.AppImage
+          --appdir AppDir
+          --executable build/CapsLoggerV2
+          --desktop-file AppDir/CapsLoggerV2.desktop
+          --icon-file AppDir/CAPS.png
+          --plugin qt
+          --output appimage
+
+      - name: Package Linux release (AppImage + license)
+        run: |
+          # Копируем лицензию рядом с AppImage и архивируем
+          cp AppDir/LICENSE_QT.txt .
+          # Архивируем ТОЛЬКО итоговый AppImage приложения (по шаблону имени)
+          tar czf CapsLoggerV2-Linux.tar.gz CapsLoggerV2*.AppImage LICENSE_QT.txt
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Linux
+          path: CapsLoggerV2-Linux.tar.gz
+
+  release:
+    needs: [windows, linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v5
+
+      - name: Create ZIP archives
+        run: |
+          zip -r CapsLoggerV2-Win64.zip Win64/*
+          zip -r CapsLoggerV2-Win32.zip Win32/*
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            CapsLoggerV2-Win64.zip
+            CapsLoggerV2-Win32.zip
+            Linux/*.tar.gz
+          tag_name: ${{ github.ref_name }}
+          name: CapsLoggerV2 ${{ github.ref_name }}
+          body: |
+            ## CapsLoggerV2 ${{ github.ref_name }}
+            
+            ✅ Changelog:
+              - Added the ability to disable pop-up messages about button state changes
+            
+            
+            **Download**
+            - 💻**Windows:** download -> unzip -> use
+            
+            - 🐧 **Download on Linux** (Requires glibc ≥ 2.35 (Ubuntu 22.04+, Debian 11+, Fedora 34+, or newer).):
+              ```bash
+              wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/CapsLoggerV2-Linux.tar.gz
+              tar xzf CapsLoggerV2-Linux.tar.gz
+              chmod +x CapsLoggerV2*.AppImage
+              ./CapsLoggerV2*.AppImage
+              ```
+            
+            
+            📜 **Sources**: MIT — `LICENSE` in repository.  
+            ⚙️ **Qt 5.15.2**: LGPLv3 — archives include `LICENSE_QT.txt`.  
+               Qt sources: <https://github.com/qt/qt5/tree/v5.15.2>  
+               The user can replace the Qt libraries in the program folder.  
+            📦 **Portable**: no installation required.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
